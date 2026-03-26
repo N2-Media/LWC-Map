@@ -7,10 +7,10 @@ export default class SiteAddressMap extends LightningElement {
     @api objectApiName;
 
     // Configurable via App Builder
-    @api streetField;
-    @api cityField;
-    @api stateField;
-    @api postalCodeField;
+    @api streetField = 'Street__c';
+    @api cityField = 'City__c';
+    @api stateField = 'State__c';
+    @api postalCodeField = 'Postal_Code__c';
     @api mapTitle;
     @api zoomLevel;
     @api mapHeight;
@@ -79,9 +79,12 @@ export default class SiteAddressMap extends LightningElement {
         return this.zoomLevel ? parseInt(this.zoomLevel, 10) : 15;
     }
 
-    get containerStyle() {
-        const h = this.mapHeight || '400';
-        return `height: ${h}px;`;
+    renderedCallback() {
+        const container = this.refs.mapContainer;
+        if (container) {
+            const h = this.mapHeight || '400';
+            container.style.setProperty('--map-height', `${h}px`);
+        }
     }
 
     get mapMarkers() {

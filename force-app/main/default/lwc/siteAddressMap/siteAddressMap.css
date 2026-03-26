@@ -1,0 +1,3 @@
+.map-container {
+    height: var(--map-height, 400px);
+}

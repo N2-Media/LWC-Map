@@ -22,7 +22,7 @@
     <!-- Map -->
     <template lwc:if={hasAddress}>
         <lightning-card title={markerTitle} icon-name="standard:location">
-            <div style={containerStyle}>
+            <div class="map-container" lwc:ref="mapContainer">
                 <lightning-map
                     map-markers={mapMarkers}
                     zoom-level={zoom}
