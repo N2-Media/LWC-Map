@@ -1,0 +1,46 @@
+<template>
+    <!-- Loading state -->
+    <template lwc:if={isLoading}>
+        <lightning-card title={markerTitle} icon-name="standard:location">
+            <div class="slds-align_absolute-center slds-p-around_large">
+                <lightning-spinner alternative-text="Loading address..." size="medium"></lightning-spinner>
+            </div>
+        </lightning-card>
+    </template>
+
+    <!-- Error state -->
+    <template lwc:if={hasError}>
+        <lightning-card title={markerTitle} icon-name="standard:location">
+            <div class="slds-p-around_medium">
+                <div class="slds-text-color_error slds-text-body_small">
+                    {errorMessage}
+                </div>
+            </div>
+        </lightning-card>
+    </template>
+
+    <!-- Map -->
+    <template lwc:if={hasAddress}>
+        <lightning-card title={markerTitle} icon-name="standard:location">
+            <div style={containerStyle}>
+                <lightning-map
+                    map-markers={mapMarkers}
+                    zoom-level={zoom}
+                    markers-title={markerTitle}>
+                </lightning-map>
+            </div>
+            <div slot="footer" class="slds-text-body_small slds-text-color_weak">
+                {street}, {city}, {state} {postalCode}
+            </div>
+        </lightning-card>
+    </template>
+
+    <!-- No address -->
+    <template lwc:if={noAddress}>
+        <lightning-card title={markerTitle} icon-name="standard:location">
+            <div class="slds-align_absolute-center slds-p-around_medium slds-text-color_weak">
+                No address provided.
+            </div>
+        </lightning-card>
+    </template>
+</template>

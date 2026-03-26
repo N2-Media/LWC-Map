@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Site Address Map</masterLabel>
+    <description>Renders a Google Maps pin from configurable address fields. Works on any object.</description>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="streetField"
+                      type="String"
+                      label="Street Field API Name"
+                      description="API name of the street field (e.g. Site_Street__c)"
+                      required="true" />
+            <property name="cityField"
+                      type="String"
+                      label="City Field API Name"
+                      description="API name of the city field (e.g. Site_City__c)" />
+            <property name="stateField"
+                      type="String"
+                      label="State Field API Name"
+                      description="API name of the state field (e.g. Site_State__c)" />
+            <property name="postalCodeField"
+                      type="String"
+                      label="Postal Code Field API Name"
+                      description="API name of the postal code field (e.g. Site_Postal_Code__c)" />
+            <property name="mapTitle"
+                      type="String"
+                      label="Card Title"
+                      default="Site Address"
+                      description="Title shown on the card header" />
+            <property name="zoomLevel"
+                      type="String"
+                      label="Zoom Level (1-20)"
+                      default="15"
+                      description="Map zoom level. 1 = world, 20 = building-level" />
+            <property name="mapHeight"
+                      type="String"
+                      label="Map Height (px)"
+                      default="400"
+                      description="Height of the map container in pixels" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
